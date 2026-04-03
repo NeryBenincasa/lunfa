@@ -238,17 +238,20 @@ blockquote {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.22;
-  filter: grayscale(100%);
+  opacity: 0.28;
+  /* Escala de grises con leve tinte sepia para que case con la paleta crema */
+  filter: grayscale(85%) sepia(15%) brightness(0.85);
   z-index: 0;
 }
 
-/* Gradiente encima de la imagen para que el texto respire */
+/* Gradiente: funde los bordes con el fondo pero deja el centro más abierto */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, var(--color-bg) 85%);
+  background:
+    radial-gradient(ellipse 60% 80% at center, transparent 40%, var(--color-bg) 90%),
+    linear-gradient(to bottom, var(--color-bg) 0%, transparent 18%, transparent 82%, var(--color-bg) 100%);
   z-index: 1;
 }
 
